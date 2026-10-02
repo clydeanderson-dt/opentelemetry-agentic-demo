@@ -23,7 +23,7 @@ on:
         type: string
       dockerhub_repo:
         description: Docker Hub repository
-        default: 'otel/demo'
+        default: 'clydeandersondt/opentelemetry-agentic-demo'
         required: false
         type: string
       ghcr_repo:
