@@ -60,4 +60,5 @@ src/shipping/target/
 !src/currency/build
 
 # Local deployment docs
-docs/deployment/
+docs/
+deployment/
