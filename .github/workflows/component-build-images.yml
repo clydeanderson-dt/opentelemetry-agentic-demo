@@ -171,6 +171,12 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+      - name: Sanitize version tag
+        id: sanitize
+        run: |
+          VERSION="${{ inputs.version }}"
+          SANITIZED=$(echo "$VERSION" | sed 's/[^a-zA-Z0-9._-]/-/g' | sed 's/^[-.]*//' | cut -c1-80)
+          echo "tag_prefix=${SANITIZED}" >> "$GITHUB_OUTPUT"
       - name: Load environment variables from .env file
         run: |
           if [ -f .env ]; then
@@ -288,6 +294,6 @@ jobs:
             OPENTELEMETRY_CPP_VERSION=${{ env.OPENTELEMETRY_CPP_VERSION }}
             OPAMP_GO_REF=${{ env.OPAMP_GO_REF }}
           tags: |
-            ${{ inputs.dockerhub_repo }}:latest-${{matrix.file_tag.tag_suffix }}
+            ${{ inputs.dockerhub_repo }}:${{ steps.sanitize.outputs.tag_prefix }}-${{ matrix.file_tag.tag_suffix }}
           cache-from: type=gha,scope=${{ matrix.file_tag.tag_suffix }}
           cache-to: type=gha,scope=${{ matrix.file_tag.tag_suffix }}

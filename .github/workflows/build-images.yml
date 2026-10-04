@@ -21,6 +21,7 @@ jobs:
     with:
       push: true
       force_build: false
+      version: ${{ github.ref_name == 'main' && 'latest' || github.ref_name }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
