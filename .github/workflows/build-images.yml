@@ -20,7 +20,7 @@ jobs:
     uses: $/.github/workflows/component-build-images.yml
     with:
       push: true
-      force_build: true
+      force_build: false
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}

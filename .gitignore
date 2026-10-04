@@ -61,6 +61,3 @@ src/shipping/target/
 
 # Local deployment docs
 docs/deployment/
-
-# Private Helm values (contains Docker Hub repo + Dynatrace token references)
-values.yaml
