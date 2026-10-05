@@ -1,5 +1,7 @@
 arize-otel
 openinference-instrumentation-langchain
+opentelemetry-instrumentation-fastapi
+opentelemetry-instrumentation-httpx
 requests==2.34.2
 python-dotenv==1.2.3
 httpx==0.28.1

@@ -10,6 +10,8 @@ import os
 
 from arize.otel import register
 from openinference.instrumentation.langchain import LangChainInstrumentor
+from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
+from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
 
 from src.agents.agents import Agent
 from src.agents.feature_flags import init_feature_flags
@@ -18,12 +20,14 @@ logging.basicConfig(level=logging.INFO)
 
 tracer_provider = register()
 LangChainInstrumentor().instrument(tracer_provider=tracer_provider)
+HTTPXClientInstrumentor().instrument()
 
 init_feature_flags()
 
 async def start_servers():
     """Run the LangGraph Agent server"""
     agent = Agent()
+    FastAPIInstrumentor.instrument_app(agent.app)
     await agent.launch()
 
 

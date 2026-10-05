@@ -63,3 +63,4 @@ src/shipping/target/
 docs/
 deployment/
 backlog/
+.arize-tmp-traces/
