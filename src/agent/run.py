@@ -16,7 +16,7 @@ from src.agents.feature_flags import init_feature_flags
 
 logging.basicConfig(level=logging.INFO)
 
-tracer_provider = register(endpoint=os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"))
+tracer_provider = register()
 LangChainInstrumentor().instrument(tracer_provider=tracer_provider)
 
 init_feature_flags()
