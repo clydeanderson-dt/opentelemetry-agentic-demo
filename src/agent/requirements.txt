@@ -690,6 +690,7 @@ cryptography==50.0.2 \
     #   authlib
     #   joserfc
     #   pyjwt
+    #   secretstorage
 cyclopts==5.1.1 \
     --hash=sha256:252fe37b01a80f10933f91c312db551e4e86ffd87bee401ab2ed091769135426 \
     --hash=sha256:ff0da67b2d2d8fe716d20ab82c698277ef30a8fb75d24e9b38a06f56c44931fd
@@ -1064,6 +1065,12 @@ jaraco-functools==4.6.0 \
     --hash=sha256:880c577ec9720b3a052d5bc611fb9f2269b3d87902ef42440df443b88e443280 \
     --hash=sha256:99e3dc0060c5cbe8fcd1cdb36258e2a65ca40f1566b2033b12abb1bb44dd3c30
     # via keyring
+jeepney==0.9.0 \
+    --hash=sha256:97e5714520c16fc0a45695e5365a2e11b81ea79bba796e26f9f1d178cb182683 \
+    --hash=sha256:cf0e9e845622b81e4a28df94c40345400256ec608d0e55bb8a3feaa9163f5732
+    # via
+    #   -r /Users/clyde.anderson/repos/opentelemetry-agentic-demo/src/agent/requirements.in
+    #   secretstorage
 jiter==0.17.0 \
     --hash=sha256:00b5a98df3e3a3e8cf7b619f4ac2f8bf975bbf3d95d02c5d17b8dbfe5c8b8245 \
     --hash=sha256:00d783a779c5664e16dbad5e3a3c3a75e128b07dd5f4765159658d9210a50ca5 \
@@ -2491,6 +2498,10 @@ rpds-py==2026.6.3 \
     # via
     #   jsonschema
     #   referencing
+secretstorage==3.5.0 \
+    --hash=sha256:0ce65888c0725fcb2c5bc0fdb8e5438eece02c523557ea40ce0703c266248137 \
+    --hash=sha256:f04b8e4689cbce351744d5537bf6b1329c6fc68f91fa666f60a380edddcd11be
+    # via -r /Users/clyde.anderson/repos/opentelemetry-agentic-demo/src/agent/requirements.in
 semver==3.1.0 \
     --hash=sha256:14bc073439513d7773662a338f4db9829cf16c12b74b9568e2d2689975fbd7fc \
     --hash=sha256:6e4998f8b4762acdfea85f9bfd5b4032e0bb50038dc04bf82011b42d5d1145c5
