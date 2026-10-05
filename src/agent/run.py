@@ -4,27 +4,22 @@
 # SPDX-License-Identifier: Apache-2.0
 
 
-
 import asyncio
 import logging
+import os
 
-from dotenv import load_dotenv
+from arize.otel import register
+from openinference.instrumentation.langchain import LangChainInstrumentor
+
+from src.agents.agents import Agent
+from src.agents.feature_flags import init_feature_flags
 
 logging.basicConfig(level=logging.INFO)
 
-load_dotenv()
-
-from arize.otel import register  # noqa: E402
-from openinference.instrumentation.langchain import LangChainInstrumentor  # noqa: E402
-
-tracer_provider = register(project_name="opentelemetry-agentic-demo")
+tracer_provider = register(endpoint=os.environ.get("OTEL_EXPORTER_OTLP_ENDPOINT"))
 LangChainInstrumentor().instrument(tracer_provider=tracer_provider)
 
-from src.agents.agents import Agent  # noqa: E402
-from src.agents.feature_flags import init_feature_flags  # noqa: E402
-
 init_feature_flags()
-
 
 async def start_servers():
     """Run the LangGraph Agent server"""
