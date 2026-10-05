@@ -9,12 +9,19 @@ import asyncio
 import logging
 
 from dotenv import load_dotenv
-from src.agents.agents import Agent
-from src.agents.feature_flags import init_feature_flags
 
 logging.basicConfig(level=logging.INFO)
 
 load_dotenv()
+
+from arize.otel import register  # noqa: E402
+from openinference.instrumentation.langchain import LangChainInstrumentor  # noqa: E402
+
+tracer_provider = register(project_name="opentelemetry-agentic-demo")
+LangChainInstrumentor().instrument(tracer_provider=tracer_provider)
+
+from src.agents.agents import Agent  # noqa: E402
+from src.agents.feature_flags import init_feature_flags  # noqa: E402
 
 init_feature_flags()
 

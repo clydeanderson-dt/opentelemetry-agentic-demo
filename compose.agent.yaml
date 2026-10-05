@@ -29,7 +29,7 @@ services:
     volumes:
       - ./src/agent/fixtures:/app/fixtures
     environment:
-      - TRACELOOP_BASE_URL
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://${OTEL_COLLECTOR_HOST}:${OTEL_COLLECTOR_PORT_GRPC}
       - GRAPH_RECURSION_LIMIT
       - MCP_ENDPOINT
       - MCP_PORT
@@ -80,7 +80,6 @@ services:
     ports:
       - "${MCP_PORT}"
     environment:
-      - TRACELOOP_BASE_URL
       - MCP_ENDPOINT
       - MCP_PORT
       - OTEL_EXPORTER_OTLP_INSECURE=true
