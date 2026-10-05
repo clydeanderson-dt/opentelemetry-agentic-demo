@@ -5,3 +5,5 @@ langchain==1.4.2
 mcp==1.30.0
 fastmcp==3.4.7
 fastapi==0.141.1
+jeepney==0.9.0
+secretstorage==3.5.0
