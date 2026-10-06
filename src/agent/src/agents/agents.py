@@ -93,6 +93,7 @@ class Agent:
             model,
             tools=tools,
             system_prompt=system_prompt,
+            name=os.getenv("OTEL_SERVICE_NAME")
         )
         try:
             messages = list(history) if history is not None else []
