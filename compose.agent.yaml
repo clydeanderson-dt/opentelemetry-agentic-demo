@@ -82,6 +82,7 @@ services:
     environment:
       - MCP_ENDPOINT
       - MCP_PORT
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://${OTEL_COLLECTOR_HOST}:${OTEL_COLLECTOR_PORT_GRPC}
       - OTEL_EXPORTER_OTLP_INSECURE=true
       - APPLICATION_ENDPOINT
       - OTEL_RESOURCE_ATTRIBUTES=${OTEL_RESOURCE_ATTRIBUTES},service.criticality=low
@@ -89,6 +90,8 @@ services:
       - OTEL_PYTHON_SDK_INTERNAL_METRICS_ENABLED=true
     depends_on:
       frontend:
+        condition: service_started
+      otel-collector:
         condition: service_started
     logging:
       driver: "json-file"

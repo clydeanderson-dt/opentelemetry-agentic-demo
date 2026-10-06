@@ -1,3 +1,6 @@
+arize-otel
+openinference-instrumentation-mcp
+opentelemetry-instrumentation-httpx
 requests==2.34.2
 python-dotenv==1.2.3
 httpx==0.28.1

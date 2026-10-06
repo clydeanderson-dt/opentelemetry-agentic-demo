@@ -4,16 +4,24 @@
 # SPDX-License-Identifier: Apache-2.0
 
 
-
 import asyncio
 import logging
 
 from dotenv import load_dotenv
+
+load_dotenv()
+
+from arize.otel import register
+from openinference.instrumentation.mcp import MCPInstrumentor
+from opentelemetry.instrumentation.httpx import HTTPXClientInstrumentor
+
+tracer_provider = register()
+MCPInstrumentor().instrument(tracer_provider=tracer_provider)
+HTTPXClientInstrumentor().instrument()
+
 from src.mcp_server.astronomy_shop_mcp_server import AstronomyShopMcp
 
 logging.basicConfig(level=logging.INFO)
-
-load_dotenv()
 
 
 async def start_servers():
